@@ -1,0 +1,12 @@
+services:
+  jackett:
+    container_name: arch-jackett
+    # image: jackett
+    build: .
+    restart: unless-stopped
+    ports:
+      - "9117:9117"
+    volumes:
+      - data:/var/lib/jackett
+volumes:
+  data:
