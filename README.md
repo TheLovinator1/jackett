@@ -44,9 +44,9 @@ location /jackett {
 
 ## Images
 
-![Screenshot 1](img\jackett-screenshot1.png)
-![Screenshot 2](img\jackett-screenshot2.png)
-![Screenshot 3](img\jackett-screenshot3.png)
+![Screenshot 1](img/jackett-screenshot1.png)
+![Screenshot 2](img/jackett-screenshot2.png)
+![Screenshot 3](img/jackett-screenshot3.png)
 Images are from the [Jackett/Jackett README.md](https://github.com/Jackett/Jackett#screenshots)
 
 ## Need help?
