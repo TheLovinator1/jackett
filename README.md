@@ -38,9 +38,9 @@ location /jackett {
 
 ## Ports
 
-| Port | Description | Required |
-| ---- | ----------- | -------- |
-| 9117 | Web ui      | Yes      |
+| Port     | Description | Required |
+| -------- | ----------- | -------- |
+| 9117/tcp | Web ui      | Yes      |
 
 ## Images
 
