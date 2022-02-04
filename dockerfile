@@ -1,7 +1,6 @@
 FROM archlinux
 
 ARG pkgver="0.20.470"
-ARG source_x86_64="https://github.com/Jackett/Jackett/releases/download/v${pkgver}/Jackett.Binaries.LinuxAMDx64.tar.gz"
 
 # Add mirrors for Sweden. You can add your own mirrors to the mirrorlist file. Should probably use reflector.
 ADD mirrorlist /etc/pacman.d/mirrorlist
@@ -24,11 +23,12 @@ useradd --system --uid 1000 --gid 1000 jackett && \
 install -d -o jackett -g jackett -m 775 /var/lib/jackett /usr/lib/jackett/ /tmp/jackett
 
 # Update the system and install depends
-RUN pacman -Syu --noconfirm && pacman -S curl openssl-1.0 wget --noconfirm
+RUN pacman -Syu --noconfirm && pacman -S curl openssl-1.0 --noconfirm
 
 WORKDIR /tmp/jackett
 
-RUN wget "${source_x86_64}" -O "Jackett.Binaries.LinuxAMDx64-${pkgver}.tar.gz"
+# Download and extract the package
+ADD "https://github.com/Jackett/Jackett/releases/download/v${pkgver}/Jackett.Binaries.LinuxAMDx64.tar.gz" "/tmp/jackett/Jackett.Binaries.LinuxAMDx64-${pkgver}.tar.gz"
 RUN tar -xf "Jackett.Binaries.LinuxAMDx64-${pkgver}.tar.gz" -C /tmp/jackett && \
 rm "Jackett.Binaries.LinuxAMDx64-${pkgver}.tar.gz" && \
 install -d -m 755 "/usr/lib/jackett/" && \
