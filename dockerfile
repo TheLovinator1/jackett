@@ -1,7 +1,7 @@
 FROM archlinux
 
 # Jackett version
-ARG pkgver="0.20.470"
+ARG pkgver="0.20.504"
 
 # Add mirrors for Sweden. You can add your own mirrors to the mirrorlist file. Should probably use reflector.
 ADD mirrorlist /etc/pacman.d/mirrorlist
