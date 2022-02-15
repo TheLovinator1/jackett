@@ -12,7 +12,7 @@ jobs:
         id: vars
         run: |
           echo ::set-output name=latest_version::$(curl --silent "https://api.github.com/repos/jackett/jackett/releases/latest" | jq -r .tag_name)
-          echo ::set-output name=body::$(curl --silent "https://api.github.com/repos/jackett/jackett/releases/latest" | jq -r .body)
+          echo ::set-output name=latest_body::$(curl --silent "https://api.github.com/repos/jackett/jackett/releases/latest" | jq -r .body)
       - name: Update Dockerfile
         run: sed -i "s/ARG pkgver=.*/ARG pkgver=${{ steps.vars.outputs.latest_version }}/g" Dockerfile
       - name: Create Pull Request
@@ -25,6 +25,6 @@ jobs:
           signoff: true
           commit-message: Update version to ${{ steps.vars.outputs.latest_version }}
           title: Update version to ${{ steps.vars.outputs.latest_version }}
-          body: "Hello 🤖\n I found a new version: ${{ steps.vars.outputs.latest_version }}\n${{ steps.vars.outputs.body }}"
+          body: "Hello 🤖\nI found a new version: ${{ steps.vars.outputs.latest_version }}\n${{ steps.vars.outputs.latest_body }}"
           branch: update-version
           delete-branch: true
