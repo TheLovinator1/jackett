@@ -1,8 +1,7 @@
 name: Update Jackett version
 on:
-  push:
-    branches:
-      - master
+  schedule:
+    - cron: "0 * * * *"
 jobs:
   updateAuthors:
     runs-on: ubuntu-latest
