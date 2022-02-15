@@ -26,7 +26,7 @@ jobs:
           signoff: true
           commit-message: Update version to $latest_version
           title: Update version to $latest_version
-          body: Hello 🤖\n I found a new version: $latest_version\n$body
+          body: Hello!\n I found a new version: $latest_version\n$body
           branch: $latest_version
           branch-suffix: timestamp
           delete-branch: true
