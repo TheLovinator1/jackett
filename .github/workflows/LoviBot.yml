@@ -8,15 +8,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-
-      - name: Get Jackett version and modify Dockerfile
+      - name: Get Jackett version
+        id: vars
         run: |
-          export latest_version=$(curl --silent "https://api.github.com/repos/jackett/jackett/releases/latest" | jq -r .tag_name)
-          export body=$(curl --silent "https://api.github.com/repos/jackett/jackett/releases/latest" | jq -r .body)
-          sed -i "s/ARG pkgver=.*/ARG pkgver=$latest_version/g" Dockerfile
-          echo $latest_version
-          echo $body
-
+          echo ::set-output name=latest_version::$(curl --silent "https://api.github.com/repos/jackett/jackett/releases/latest" | jq -r .tag_name)
+          echo ::set-output name=body::$(curl --silent "https://api.github.com/repos/jackett/jackett/releases/latest" | jq -r .body)
+      - name: Update Dockerfile
+        run: sed -i "s/ARG pkgver=.*/ARG pkgver=${{ steps.vars.outputs.latest_version }}/g" Dockerfile
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
@@ -24,9 +22,8 @@ jobs:
           committer: LoviBot <99759169+LoviBot@users.noreply.github.com>
           author: LoviBot <99759169+LoviBot@users.noreply.github.com>
           signoff: true
-          commit-message: Update version to ${{ env.latest_version }}
-          title: Update version to ${{ env.latest_version }}
-          body: "Hello 🤖\n I found a new version: ${{ env.latest_version }}\n${{ env.body }}"
-          branch: ${{ env.latest_version }}
-          branch-suffix: timestamp
+          commit-message: Update version to ${{ steps.vars.outputs.latest_version }}
+          title: Update version to ${{ steps.vars.outputs.latest_version }}
+          body: "Hello 🤖\n I found a new version: ${{ steps.vars.outputs.latest_version }}\n${{ steps.vars.outputs.body }}"
+          branch: update-version
           delete-branch: true
