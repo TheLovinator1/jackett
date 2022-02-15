@@ -1,0 +1,33 @@
+name: Update Jackett version
+on:
+  push:
+    branches:
+      - master
+jobs:
+  updateAuthors:
+    runs-on: ubuntu-latest
+    steps:
+      # Download repo
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      # Update version in Dockerfile
+      - name: Get Jackett version and modify Dockerfile
+        run: |
+          export latest_version=$(curl --silent "https://api.github.com/repos/jackett/jackett/releases/latest" | jq -r .tag_name)
+          export body=$(curl --silent "https://api.github.com/repos/jackett/jackett/releases/latest" | jq -r .body)
+          sed -i "s/ARG pkgver=.*/ARG pkgver=$latest_version/g" Dockerfile
+          echo $latest_version 
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          committer: LoviBot <99759169+LoviBot@users.noreply.github.com>
+          author: LoviBot <99759169+LoviBot@users.noreply.github.com>
+          signoff: true
+          commit-message: Update version to $latest_version
+          title: Update version to $latest_version
+          body: Hello 🤖\n I found a new version: $latest_version\n$body
+          branch: $latest_version
+          branch-suffix: timestamp
+          delete-branch: true
+          
