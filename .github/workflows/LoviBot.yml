@@ -19,6 +19,7 @@ jobs:
         uses: peter-evans/create-pull-request@v3
         with:
           token: ${{ secrets.LOVIBOT_TOKEN }}
+          push-to-fork: LoviBot/docker-arch-jackett
           committer: LoviBot <99759169+LoviBot@users.noreply.github.com>
           author: LoviBot <99759169+LoviBot@users.noreply.github.com>
           signoff: true
