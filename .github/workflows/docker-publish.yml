@@ -10,6 +10,10 @@ on:
     # If we tag something as a semver tag(e.g. v0.1.0, v2.1.2), build and publish that
     tags: ["v*.*.*"]
 
+    # Only build if Dockerfile is changed
+    paths:
+      - Dockerfile
+
 env:
   # Needed for login to GitHub Container Registry
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
