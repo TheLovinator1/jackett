@@ -16,6 +16,7 @@ jobs:
           export body=$(curl --silent "https://api.github.com/repos/jackett/jackett/releases/latest" | jq -r .body)
           sed -i "s/ARG pkgver=.*/ARG pkgver=$latest_version/g" Dockerfile
           echo $latest_version
+          echo $body
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
