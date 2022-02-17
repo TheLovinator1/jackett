@@ -13,6 +13,7 @@ on:
     # Only build if Dockerfile is changed
     paths:
       - Dockerfile
+      - docker-publish.yml
 
 env:
   # Needed for login to GitHub Container Registry
