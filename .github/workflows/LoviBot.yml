@@ -24,6 +24,5 @@ jobs:
           signoff: true
           commit-message: Update version to ${{ steps.vars.outputs.latest_version }}
           title: Update version to ${{ steps.vars.outputs.latest_version }}
-          body: "Hello 🤖\nI found a new version: ${{ steps.vars.outputs.latest_version }}\n${{ steps.vars.outputs.latest_body }}"
+          body: "Hello 🤖\nI found a new version: ${{ steps.vars.outputs.latest_version }}\n ${{ steps.vars.outputs.latest_body }}"
           branch: master
-          delete-branch: true
