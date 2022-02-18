@@ -18,12 +18,12 @@ jobs:
         uses: peter-evans/create-pull-request@v3
         with:
           token: ${{ secrets.LOVIBOT_TOKEN }}
-          push-to-fork: LoviBot/docker-arch-jackett
+          push-to-fork: LoviBot/jackett
           committer: LoviBot <99759169+LoviBot@users.noreply.github.com>
           author: LoviBot <99759169+LoviBot@users.noreply.github.com>
           signoff: true
           commit-message: Update version to ${{ steps.vars.outputs.latest_version }}
           title: Update version to ${{ steps.vars.outputs.latest_version }}
           body: "Hello 🤖\nI found a new version: ${{ steps.vars.outputs.latest_version }}\n${{ steps.vars.outputs.latest_body }}"
-          branch: update-version
+          branch: master
           delete-branch: true
