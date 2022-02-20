@@ -12,7 +12,7 @@ org.opencontainers.image.description="More trackers for Sonarr, Radarr, Lidarr a
 org.opencontainers.image.base.name="docker.io/library/archlinux"
 
 # Jackett version
-ARG pkgver=v0.20.576
+ARG pkgver=v0.20.590
 
 # Update the system and install depends
 RUN pacman -S curl openssl-1.0 --noconfirm
