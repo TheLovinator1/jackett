@@ -1,4 +1,4 @@
-FROM ghcr.io/thelovinator1/base:master
+FROM ubuntu:latest
 
 # https://github.com/opencontainers/image-spec/blob/main/annotations.md#pre-defined-annotation-keys
 LABEL org.opencontainers.image.authors="Joakim Hellsén <tlovinator@gmail.com>" \
@@ -8,14 +8,15 @@ org.opencontainers.image.source="https://github.com/Feed-The-Fish/jackett" \
 org.opencontainers.image.vendor="Joakim Hellsén" \
 org.opencontainers.image.license="GPL-3.0+" \
 org.opencontainers.image.title="Jackett" \
-org.opencontainers.image.description="More trackers for Sonarr, Radarr, Lidarr and other arrs." \
-org.opencontainers.image.base.name="docker.io/library/archlinux"
+org.opencontainers.image.description="More trackers for Sonarr, Radarr, Lidarr and other arrs."
 
 # Jackett version
 ARG pkgver=v0.20.756
 
 # Update the system and install depends
-RUN pacman -S curl openssl-1.0 --noconfirm
+# https://packages.ubuntu.com/search?suite=focal&arch=amd64&searchon=names&keywords=libicu
+# TODO: Automate libicu version with LoviBot?
+RUN apt-get update && apt-get install -y curl libicu66
 
 # Download and extract everything to /tmp/jackett, it will be removed after installation
 WORKDIR /tmp/jackett
@@ -24,6 +25,7 @@ WORKDIR /tmp/jackett
 ADD "https://github.com/Jackett/Jackett/releases/download/${pkgver}/Jackett.Binaries.LinuxAMDx64.tar.gz" "/tmp/jackett/Jackett.Binaries.LinuxAMDx64-${pkgver}.tar.gz"
 RUN tar -xf "Jackett.Binaries.LinuxAMDx64-${pkgver}.tar.gz" -C /tmp/jackett && \
 rm "Jackett.Binaries.LinuxAMDx64-${pkgver}.tar.gz" && \
+useradd --system --home /var/lib/jackett --shell /bin/nologin lovinator && \
 install -d -o lovinator -g lovinator -m 755 /var/lib/jackett /usr/lib/jackett && \
 cp -dpr --no-preserve=ownership "Jackett/." "/usr/lib/jackett/" && \
 chmod +x "/usr/lib/jackett/jackett" && \
