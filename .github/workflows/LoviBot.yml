@@ -15,7 +15,7 @@ jobs:
       - name: Update Dockerfile
         run: sed -i "s/ARG pkgver=.*/ARG pkgver=${{ steps.vars.outputs.latest_version }}/g" Dockerfile
       - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v3
+        uses: peter-evans/create-pull-request@v4
         with:
           token: ${{ secrets.LOVIBOT_TOKEN }}
           push-to-fork: LoviBot/jackett
