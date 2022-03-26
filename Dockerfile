@@ -15,7 +15,7 @@ ARG pkgver=v0.20.756
 
 # Update the system and install depends
 # https://packages.ubuntu.com/search?suite=focal&arch=amd64&searchon=names&keywords=libicu
-# TODO: Automate libicu version with LoviBot?
+# TODO: #8 Automate libicu version with LoviBot?
 RUN apt-get update && apt-get install -y curl libicu66
 
 # Download and extract everything to /tmp/jackett, it will be removed after installation
