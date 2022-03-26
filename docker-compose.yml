@@ -1,8 +1,7 @@
 services:
   jackett:
     container_name: jackett
-    image: ghcr.io/thelovinator1/jackett:master
-    # build: .
+    image: ghcr.io/feed-the-fish/jackett:master
     restart: unless-stopped
     ports:
       - "9117:9117"

@@ -1,10 +1,10 @@
 FROM ghcr.io/thelovinator1/base:master
 
 # https://github.com/opencontainers/image-spec/blob/main/annotations.md#pre-defined-annotation-keys
-LABEL org.opencontainers.image.authors="Joakim Hellsén <tlovinator@gmail.com>" \ 
-org.opencontainers.image.url="https://github.com/TheLovinator1/docker-arch-jackett" \
-org.opencontainers.image.documentation="https://github.com/TheLovinator1/docker-arch-jackett" \
-org.opencontainers.image.source="https://github.com/TheLovinator1/docker-arch-jackett" \
+LABEL org.opencontainers.image.authors="Joakim Hellsén <tlovinator@gmail.com>" \
+org.opencontainers.image.url="https://github.com/Feed-The-Fish/jackett" \
+org.opencontainers.image.documentation="https://github.com/Feed-The-Fish/jackett" \
+org.opencontainers.image.source="https://github.com/Feed-The-Fish/jackett" \
 org.opencontainers.image.vendor="Joakim Hellsén" \
 org.opencontainers.image.license="GPL-3.0+" \
 org.opencontainers.image.title="Jackett" \
