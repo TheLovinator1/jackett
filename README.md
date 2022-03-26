@@ -4,7 +4,7 @@ More trackers for Sonarr, Radarr, Lidarr and other arrs.
 
 ## Docker
 
-This Docker image is using [Ubuntu 22.04](https://hub.docker.com/_/ubuntu/) as base image. It Jackett runs as a user with the id `1000`.
+This Docker image is using [Ubuntu 22.04](https://hub.docker.com/_/ubuntu/) as base image. Jackett runs as a user with the id `1000`.
 
 ## Running Jackett behind a reverse proxy
 
