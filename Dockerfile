@@ -11,7 +11,7 @@ org.opencontainers.image.title="Jackett" \
 org.opencontainers.image.description="More trackers for Sonarr, Radarr, Lidarr and other arrs."
 
 # Jackett version
-ARG pkgver=v0.20.779
+ARG pkgver=v0.20.781
 
 # Update the system and install depends
 # https://packages.ubuntu.com/search?suite=jammy&arch=amd64&searchon=names&keywords=libicu
