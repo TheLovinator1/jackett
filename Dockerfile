@@ -16,7 +16,7 @@ ARG pkgver=v0.20.1062
 # Update the system and install depends
 # https://packages.ubuntu.com/search?suite=jammy&arch=amd64&searchon=names&keywords=libicu
 # TODO: #8 Automate libicu version with LoviBot?
-RUN apt-get update && apt-get install -y curl libicu70
+RUN apt-get update && apt-get install -y curl libicu71
 
 # Download and extract everything to /tmp/jackett, it will be removed after installation
 WORKDIR /tmp/jackett
