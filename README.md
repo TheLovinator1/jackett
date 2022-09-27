@@ -1,3 +1,8 @@
+# Don't use this :-)
+
+Better containers are out there, you should use [linuxserver/jackett](https://github.com/linuxserver/docker-jackett)
+instead.
+
 # Jackett
 
 More trackers for Sonarr, Radarr, Lidarr and other arrs.
@@ -12,11 +17,11 @@ the id `1000`.
 Reverse Proxy instructions are from
 the [Jackett/Jackett README.md](https://github.com/Jackett/Jackett#running-jackett-behind-a-reverse-proxy):
 
-When running Jackett behind a reverse proxy make sure that the original hostname of the request is passed to Jackett. If
-HTTPS is used also set the X-Forwarded-Proto header to "https". Don't forget to adjust the "Base path override" Jackett
+Running Jackett behind a reverse proxy make sure the original hostname of the request is passed to Jackett. When HTTPS
+is used also set the X-Forwarded-Proto header to "https". Don't forget to adjust the "Base path override" Jackett
 option accordingly.
 
-Example config for apache:
+Example config for Apache:
 
 ```apacheconf
 <Location /jackett>
@@ -43,19 +48,18 @@ location /jackett {
 ## Ports
 
 | Port     | Description | Required |
-| -------- | ----------- | -------- |
+|----------|-------------|----------|
 | 9117/tcp | Web ui      | Yes      |
 
 ## Images
 
-![Screenshot 1](img/jackett-screenshot1.png)
-![Screenshot 2](img/jackett-screenshot2.png)
-![Screenshot 3](img/jackett-screenshot3.png)
+![Screenshot 1](img/jackett-screenshot1.png "Screenshot of Jackett")
+![Screenshot 2](img/jackett-screenshot2.png "Another screenshot of Jackett")
+![Screenshot 3](img/jackett-screenshot3.png "Another screenshot of Jackett")
 Images are from the [Jackett/Jackett README.md](https://github.com/Jackett/Jackett#screenshots)
 
 ## Need help?
 
 - Email: [tlovinator@gmail.com](mailto:tlovinator@gmail.com)
 - Discord: TheLovinator#9276
-- Steam: [TheLovinator](https://steamcommunity.com/id/TheLovinator/)
 - Send an issue: [jackett/issues](https://github.com/Feed-The-Fish/jackett/issues)
